@@ -1,3 +1,8 @@
+import { nb } from "@payloadcms/translations/languages/nb";
+import { es } from "@payloadcms/translations/languages/es";
+import { zh } from "@payloadcms/translations/languages/zh";
+import { en } from "@payloadcms/translations/languages/en";
+
 import { postgresAdapter } from '@payloadcms/db-postgres';
 import { lexicalEditor } from '@payloadcms/richtext-lexical';
 import path from 'path';
@@ -39,6 +44,13 @@ const blocks: Block[] = [];
  * gjøre at prosjektet ditt ikke kjører!
  */
 export default buildConfig({
+  // Hvilke språk skal brukeren kunne velge fra profilen sin
+  // a11y accessibility
+  i18n: {
+    supportedLanguages: { nb, es, zh, en },
+    fallbackLanguage: "en",
+  },
+
   admin: {
     user: Users.slug,
     importMap: {

@@ -2,6 +2,20 @@ import type { CollectionConfig } from 'payload'
 
 export const Users: CollectionConfig = {
   slug: 'users',
+  labels: {
+    singular: {
+      nb: "Bruker",
+      en: "User",
+      es: "Cerveca",
+      zh: "语言",
+    },
+    plural: {
+      nb: "Brukere",
+      en: "Users",
+      es: "Cervecas",
+      zh: "语言言言",
+    },
+  },
   admin: {
     useAsTitle: 'email',
   },
@@ -36,11 +50,23 @@ export const Users: CollectionConfig = {
 
   },
   fields: [
-    // Email added by default
-    // Add more fields as needed
+    {
+      name: "email",
+      type: "email",
+      label: { 
+        nb: "Epost",
+        es: "Posta electronico",
+      },
+      required: true,
+      access: {
+        update: ({ req: {user} }) => user?.role === "admin",
+      }
+    },
     {
       name: "role",
-      label: "Rolle",
+      label: {
+        es: "La Rolla",
+      },
       type: "select",
       required: true,
       defaultValue: "editor",
